@@ -1,5 +1,5 @@
-#ifndef THIS_HPP
-# define THIS_HPP
+#ifndef C_THIS_HPP
+# define C_THIS_HPP
 
 class Sample
 {

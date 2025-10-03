@@ -1,4 +1,4 @@
-#include "member.hpp"
+#include "c_member.hpp"
 #include <iostream>
 
 int	main(void)

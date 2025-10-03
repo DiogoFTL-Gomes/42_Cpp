@@ -1,5 +1,5 @@
 #include <iostream>
-#include "class.hpp"
+#include "c_class.hpp"
 
 Sample::Sample(void)
 {

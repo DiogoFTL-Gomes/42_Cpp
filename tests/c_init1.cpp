@@ -1,9 +1,9 @@
 #include <iostream>
-#include "init1.hpp"
+#include "c_init1.hpp"
 
-init1::init1(char p1, int p2, float p3)
+c_init1::c_init1(char p1, int p2, float p3)
 {
-	std::cout << "Chamando constructor init1" << std::endl;
+	std::cout << "Chamando constructor c_init1" << std::endl;
 
 	this->a1 = p1;
 	std::cout << "this->a1 = " << this->a1 << std::endl;
@@ -14,9 +14,9 @@ init1::init1(char p1, int p2, float p3)
 	return;
 }
 
-init1::~init1(void)
+c_init1::~c_init1(void)
 {
-	std::cout << "Destruindo init1";
+	std::cout << "Destruindo c_init1";
 	std::cout << " a1 = " << this->a1 << std::endl;
 	return;
 }

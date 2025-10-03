@@ -1,5 +1,5 @@
-#ifndef MEMBER_HPP
-# define MEMBER_HPP
+#ifndef C_MEMBER_HPP
+# define C_MEMBER_HPP
 
 class Sample
 {
