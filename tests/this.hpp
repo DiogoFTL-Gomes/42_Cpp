@@ -4,9 +4,12 @@
 class Sample
 {
 	public:
+
+		int		foo;
+
 		Sample(void);
 		~Sample(void);
-		int		foo;
+
 		void	bar(int val);
 };
 
