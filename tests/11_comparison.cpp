@@ -12,7 +12,7 @@ void	checkit(C_comparison *one, C_comparison *two)
 
 int	main(void)
 {
-	C_comparison	example1(42, 'a');
+	C_comparison	example1(42, 'a');// Fun fact: O char é publico logo, no construtor, tem que ser passado o valor antes do inteiro privado
 	C_comparison	example2(42, 'b');
 	C_comparison	example3(-42, 'c');
 

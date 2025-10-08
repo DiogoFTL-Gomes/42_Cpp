@@ -1,7 +1,7 @@
 #include <iostream>
 #include "c_comparison.hpp"
 
-C_comparison::C_comparison(int v, char x) : letter(x), _val(v)
+C_comparison::C_comparison(int v, char x) : letter(x), _val(v)//letter é publico, tem que ser inicializado antes do _val que e privado
 {
 	std::cout << "C_comparison constructer called" << std::endl;
 	return ;
