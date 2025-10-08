@@ -1,5 +1,5 @@
-#ifndef C_CONST_HPP
-# define C_CONST_HPP
+#ifndef C_CONST_H
+# define C_CONST_H
 
 class C_const {
 	public:

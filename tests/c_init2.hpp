@@ -1,5 +1,5 @@
-#ifndef C_INIT2_HPP
-# define C_INIT2_HPP
+#ifndef C_INIT2_H
+# define C_INIT2_H
 
 class c_init2
 {
