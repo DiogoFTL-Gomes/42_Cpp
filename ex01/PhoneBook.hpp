@@ -11,6 +11,8 @@ class PhoneBook
 		~PhoneBook(void);
 
 		void	put_menu(void) const;
+		void	put_add(void) const;
+		void	put_search(void) const;
 		void	check_input(std::string	line) const;
 		void	eof_input(void) const;
 
