@@ -2,11 +2,11 @@
 #include <iostream>
 
 PhoneBook::PhoneBook(void){
-	std::cout << "phonebook created" << std::endl;
+	//std::cout << "phonebook created" << std::endl;
 	return;
 }
 
 PhoneBook::~PhoneBook(void){
-	std::cout << "phonebook destroyed" << std::endl;
+	//std::cout << "phonebook destroyed" << std::endl;
 	return;
 }
