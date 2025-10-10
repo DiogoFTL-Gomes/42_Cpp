@@ -6,22 +6,18 @@ int	main(void)
 	PhoneBook	phonebook;
 	std::string	line;
 
-	line = "Give me something to read!! : ";
+	system("clear");
 	while (true)
 	{
-		std::cout << "\x1B[2J\x1B[30H";
-		std::cout << line;
+		phonebook.put_menu();
 		std::getline(std::cin, line);
 		if (std::cin.eof())
 		{
-			std::cout << "\x1B[2J\x1B[30H";
-			std::cout << "You asked to leave..." << std::endl;
+			phonebook.eof_input();
 			break;
 		}
 		else
-		{
-			line = line + " : ";
-		}
+			phonebook.check_input(line);
 	}
 
 	return (0);

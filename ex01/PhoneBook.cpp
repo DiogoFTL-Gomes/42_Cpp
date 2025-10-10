@@ -1,12 +1,53 @@
 #include "PhoneBook.hpp"
 #include <iostream>
+#include <string>
 
 PhoneBook::PhoneBook(void){
 	//std::cout << "phonebook created" << std::endl;
+	this->_nbr_contacts = 0;
 	return;
 }
 
 PhoneBook::~PhoneBook(void){
 	//std::cout << "phonebook destroyed" << std::endl;
 	return;
+}
+
+void	PhoneBook::put_menu(void) const{
+	//system("clear");
+	std::cout << "\033[1;34m" << std::endl;
+	std::cout << "====================================================================================================" << std::endl;
+	std::cout << "██████╗ ██╗  ██╗ ██████╗ ███╗   ██╗███████╗██████╗  ██████╗  ██████╗ ██╗  ██╗" << std::endl;
+	std::cout << "██╔══██╗██║  ██║██╔═══██╗████╗  ██║██╔════╝██╔══██╗██╔═══██╗██╔═══██╗██║ ██╔╝" << std::endl;
+	std::cout << "██║  ██║███████║██║   ██║██╔██╗ ██║█████╗  ██████╔╝██║   ██║██║   ██║█████╔╝ " << std::endl;
+	std::cout << "██████╔╝██╔══██║██║   ██║██║╚██╗██║██╔══╝  ██╔══██╗██║   ██║██║   ██║██╔═██╗ " << std::endl;
+	std::cout << "██║═══╝ ██║  ██║╚██████╔╝██║ ╚████║███████╗███████║╚██████╔╝╚██████╔╝██║  ██╗" << std::endl;
+	std::cout << "╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝" << std::endl;
+	std::cout << "====================================================================================================" << std::endl;
+	std::cout << "\033[0m" << std::endl;
+	std::cout << "Commands: \033[1;33mADD\033[0m | \033[1;36mSEARCH\033[0m | \033[1;31mEXIT\033[0m\n" << std::endl;
+	std::cout << "Input command!! : ";
+}
+
+void	PhoneBook::eof_input(void) const{
+	system("clear");
+	std::cout << "You asked to leave..." << std::endl;
+}
+
+void	PhoneBook::check_input(std::string line) const{
+	system("clear");
+	if (line.compare("ADD") == 0)
+		std::cout << "You typed ADD" << std::endl;
+	else if (line.compare("SEARCH") == 0)
+		std::cout << "You typed SEARCH" << std::endl;
+	else if (line.compare("EXIT") == 0)
+		std::cout << "You typed EXIT" << std::endl;
+	else
+		std::cout << "I have no idea what you want!" << std::endl;
+}
+
+void	PhoneBook::add_nbr_contacts(){
+	if (this->_nbr_contacts < 7){
+		this->_nbr_contacts++;
+	}
 }
