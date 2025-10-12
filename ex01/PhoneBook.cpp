@@ -26,12 +26,52 @@ void	PhoneBook::search_draw(void) const{
 	std::cout << "          \033[1;36m███████\033[1;31m║\033[1;36m███████\033[1;31m╗\033[1;36m██\033[1;31m║  \033[1;36m██\033[1;31m║\033[1;36m██\033[1;31m║  \033[1;36m██\033[1;31m║╚\033[1;36m██████\033[1;31m╗\033[1;36m██\033[1;31m║  \033[1;36m██\033[1;31m║     " << std::endl;
 	std::cout << "          \033[1;31m╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝     " << std::endl;
 	std::cout << "\033[1;36m===================================================================================================" << std::endl;
-	std::cout << "Commands: \033[1;33mADD\033[0m | \033[1;36mSEARCH\033[0m | \033[1;31mEXIT\033[0m\n" << std::endl;
-	std::cout << "Input command!! : ";
 	return;
 }
 
 int		PhoneBook::search_menu(void) const{
+
+	std::string	input;
+	int			slot;
+
+	while (1)
+	{
+		if (!std::getline(std::cin, input))
+			return (eof_input(), 1);
+
+		if (input.empty()){
+			search_draw();
+			std::cout << "Input cannot be empty!" << std::endl;
+			continue;
+		}
+
+		if (!is_number(input) || input.length() > 1){
+			search_draw();
+			std::cout << "Input may only contain 1 digit!" << std::endl;
+			continue;
+		}
+
+		slot = input[0] - '0';
+		if (slot == 0 ){
+			search_draw();
+			std::cout << "Duh!! There is no contact 0!!" << std::endl;
+			continue;
+		}
+
+		if (slot > 8){
+			search_draw();
+			std::cout << "Phonebook only has room for 8 contacts!" << std::endl;
+			continue;
+		}
+
+		if (slot < _get_nbr_contacts()){
+			search_draw();
+			std::cout << "Contact '" << input << "' is still empty" << std::endl;
+			continue;
+		}
+
+		
+	}
 	return (0);
 }
 
@@ -52,7 +92,7 @@ void	PhoneBook::add_draw(void) const{
 
 int	PhoneBook::add_menu(void){
 
-	std::string	line;
+	std::string	input;
 	std::string	fields[5] = {"First name", "Last name", "Nickname", "Phone number", "Darkest secret"};
 	std::string	values[5];
 	int			i;
@@ -61,23 +101,25 @@ int	PhoneBook::add_menu(void){
 	{
 		while (1)
 		{
+			add_draw();
 			std::cout << fields[i] << ": ";
-			if (!std::getline(std::cin, line))
+			std::getline(std::cin, input);
+			if (std::cin.eof())
 				return (eof_input(), 1);
 
-			if (line.empty()){
+			if (input.empty()){
 				add_draw();
 				std::cout << "Field cannot be empty!" << std::endl;
 				continue;
 			}
 
-			if (i == 3 && !is_phonenumber(line)){
+			if (i == 3 && !is_number(input)){
 				add_draw();
 				std::cout << "Phone number must contain only numbers!" << std::endl;
 				continue;
 			}
 
-			values[i] = line;
+			values[i] = input;
 			break;
 		}
 	}
@@ -116,6 +158,7 @@ int	PhoneBook::start_menu(){
 
 	std::string	line;
 
+	start_draw();
 	std::getline(std::cin, line);
 	if (std::cin.eof())
 	{
@@ -132,12 +175,12 @@ int	PhoneBook::start_input(std::string *line){
 
 	if (*line == "ADD")
 	{
-		add_draw();
+		//add_draw();
 		return (add_menu());
 	}
 	else if (*line == "SEARCH")
 	{
-		search_draw();
+		//search_draw();
 		return (search_menu());
 	}
 	else if (*line == "EXIT")
@@ -153,7 +196,7 @@ int	PhoneBook::start_input(std::string *line){
 
 void	PhoneBook::eof_input(void) const{
 	system("clear");
-	std::cout << "You asked to leave..." << std::endl;
+	std::cout << "\033[0m\nYou asked to leave..." << std::endl;
 	return;
 }
 
@@ -168,7 +211,7 @@ int		PhoneBook::_get_nbr_contacts() const{
 	return (_nbr_contacts);
 }
 
-bool	PhoneBook::is_phonenumber(const std::string line) const{
+bool	PhoneBook::is_number(const std::string line) const{
 	for (int i = 0; i < line.length(); i++){
 		if (!std::isdigit(line[i]))
 			return (false);

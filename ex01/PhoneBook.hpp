@@ -19,7 +19,7 @@ class PhoneBook
 		void	search_draw(void) const;
 		int		search_input(std::string *line) const;
 		void	eof_input(void) const;
-		bool	is_phonenumber(const std::string line) const;
+		bool	is_number(const std::string line) const;
 
 
 		int		add_menu(void);
