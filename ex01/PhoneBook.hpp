@@ -10,15 +10,19 @@ class PhoneBook
 		PhoneBook(void);
 		~PhoneBook(void);
 
-		int		start_menu() const;
-		void	draw_start(void) const;
-		int		start_input(std::string	*line) const;
-		void	add_menu(void) const;
-		void	add_input(void) const;
-		void	search_menu(void) const;
-		void	search_input(void) const;
-		void	eof_input(void) const;
 
+		int		start_menu(void);
+		void	start_draw(void) const;
+		int		start_input(std::string	*line);
+		void	add_draw(void) const;
+		int		search_menu(void) const;
+		void	search_draw(void) const;
+		int		search_input(std::string *line) const;
+		void	eof_input(void) const;
+		bool	is_phonenumber(const std::string line) const;
+
+
+		int		add_menu(void);
 
 	private:
 		Contact	_contacts[8];

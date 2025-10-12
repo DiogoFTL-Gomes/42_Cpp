@@ -5,10 +5,9 @@ int	main(void)
 {
 	PhoneBook	phonebook;
 
-	system("clear");
-	phonebook.draw_start();
 	while (true)
 	{
+		phonebook.start_draw();
 		if (phonebook.start_menu() == 1)
 			break;
 	}
