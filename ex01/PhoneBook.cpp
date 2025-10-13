@@ -117,12 +117,12 @@ int		PhoneBook::search_menu(void) const{
 		slot -= 1;
 		while (1){
 			this->search_draw();
-			std::cout << "First name: " << this->_contacts[slot].getFirstName() << std::endl;
-			std::cout << "Last name: " << this->_contacts[slot].getLastName() << std::endl;
-			std::cout << "Nickname: " << this->_contacts[slot].getNickName() << std::endl;
-			std::cout << "Phone number: " << this->_contacts[slot].getPhoneNumber() << std::endl;
-			std::cout << "Darkeste secret: " << this->_contacts[slot].getDarkestSecret() << std::endl;
-			std::cout << "Type \033[1;31mBACK\033[0m to return:";
+			std::cout << "\033[1;36mFirst name: \033[0m" << this->_contacts[slot].getFirstName() << std::endl;
+			std::cout << "\033[1;36mLast name: \033[0m" << this->_contacts[slot].getLastName() << std::endl;
+			std::cout << "\033[1;36mNickname: \033[0m" << this->_contacts[slot].getNickName() << std::endl;
+			std::cout << "\033[1;36mPhone number: \033[0m" << this->_contacts[slot].getPhoneNumber() << std::endl;
+			std::cout << "\033[1;36mDarkeste secret: \033[0m" << this->_contacts[slot].getDarkestSecret() << std::endl;
+			std::cout << "\033[1;36mType \033[1;31mBACK\033[1;36m to return:\033[0m";
 			std::getline(std::cin, input);
 			if (std::cin.eof())
 				return (this->eof_input(), 1);
@@ -152,7 +152,7 @@ void	PhoneBook::add_draw(void) const{
 int	PhoneBook::add_menu(void){
 
 	std::string	input;
-	std::string	fields[5] = {"First name", "Last name", "Nickname", "Phone number", "Darkest secret"};
+	std::string	fields[5] = {"First name: ", "Last name: ", "Nickname: ", "Phone number: ", "Darkest secret: "};
 	std::string	values[5];
 	int			i;
 
@@ -165,7 +165,7 @@ int	PhoneBook::add_menu(void){
 				std::cout << std::endl << "Entering " << 8 << "# contact" << std::endl;
 			else
 				std::cout << std::endl << "Entering " << this->_get_nbr_contacts() + 1 << "# contact" << std::endl;
-			std::cout << fields[i] << ": ";
+			std::cout << "\033[1;33m" << fields[i] << "\033[0m";
 			std::getline(std::cin, input);
 			if (std::cin.eof())
 				return (this->eof_input(), 1);
@@ -190,9 +190,9 @@ int	PhoneBook::add_menu(void){
 	i = this->_get_nbr_contacts();
 	if (i == 8)
 		i = 7;
+	this->_contacts[i].setFirstName(values[0]);
 	this->_contacts[i].setLastName(values[1]);
 	this->_contacts[i].setNickName(values[2]);
-	this->_contacts[i].setFirstName(values[0]);
 	this->_contacts[i].setPhoneNumber(values[3]);
 	this->_contacts[i].setDarkestSecret(values[4]);
 	this->_add_nbr_contacts();
@@ -209,7 +209,7 @@ void	PhoneBook::start_draw(void) const{
 	std::cout << "\033[1;34m██████\033[1;33m╗ \033[1;34m██\033[1;33m╗  \033[1;34m██\033[1;33m╗ \033[1;34m██████\033[1;33m╗ \033[1;34m███\033[1;33m╗   \033[1;34m██\033[1;33m╗\033[1;34m███████\033[1;33m╗\033[1;34m██████\033[1;33m╗  \033[1;34m██████\033[1;33m╗  \033[1;34m██████\033[1;33m╗ \033[1;34m██\033[1;33m╗  \033[1;34m██\033[1;33m╗" << std::endl;
 	std::cout << "\033[1;34m██\033[1;33m╔══\033[1;34m██\033[1;33m╗\033[1;34m██\033[1;33m║  \033[1;34m██\033[1;33m║\033[1;34m██\033[1;33m╔═══\033[1;34m██\033[1;33m╗\033[1;34m████\033[1;33m╗  \033[1;34m██\033[1;33m║\033[1;34m██\033[1;33m╔════╝\033[1;34m██\033[1;33m╔══\033[1;34m██\033[1;33m╗\033[1;34m██\033[1;33m╔═══\033[1;34m██\033[1;33m╗\033[1;34m██\033[1;33m╔═══\033[1;34m██\033[1;33m╗\033[1;34m██\033[1;33m║ \033[1;34m██\033[1;33m╔╝" << std::endl;
 	std::cout << "\033[1;34m██████\033[1;33m╔╝\033[1;34m███████\033[1;33m║\033[1;34m██\033[1;33m║   \033[1;34m██\033[1;33m║\033[1;34m██\033[1;33m╔\033[1;34m██\033[1;33m╗ \033[1;34m██\033[1;33m║\033[1;34m█████\033[1;33m╗  \033[1;34m██████\033[1;33m╔╝\033[1;34m██\033[1;33m║   \033[1;34m██\033[1;33m║\033[1;34m██\033[1;33m║   \033[1;34m██\033[1;33m║\033[1;34m█████\033[1;33m╔╝ " << std::endl;
-	std::cout << "\033[1;34m██\033[1;33m║═══╝ \033[1;34m██\033[1;33m╔══\033[1;34m██\033[1;33m║\033[1;34m██\033[1;33m║   \033[1;34m██\033[1;33m║\033[1;34m██\033[1;33m║╚\033[1;34m██\033[1;33m╗\033[1;34m██\033[1;33m║\033[1;34m██\033[1;33m╔══╝  \033[1;34m██\033[1;33m╔══\033[1;34m██\033[1;33m╗\033[1;34m██\033[1;33m║   \033[1;34m██\033[1;33m║\033[1;34m██\033[1;33m║   \033[1;34m██\033[1;33m║\033[1;34m██\033[1;33m╔═\033[1;34m██\033[1;33m╗ " << std::endl;
+	std::cout << "\033[1;34m██\033[1;33m╔═══╝ \033[1;34m██\033[1;33m╔══\033[1;34m██\033[1;33m║\033[1;34m██\033[1;33m║   \033[1;34m██\033[1;33m║\033[1;34m██\033[1;33m║╚\033[1;34m██\033[1;33m╗\033[1;34m██\033[1;33m║\033[1;34m██\033[1;33m╔══╝  \033[1;34m██\033[1;33m╔══\033[1;34m██\033[1;33m╗\033[1;34m██\033[1;33m║   \033[1;34m██\033[1;33m║\033[1;34m██\033[1;33m║   \033[1;34m██\033[1;33m║\033[1;34m██\033[1;33m╔═\033[1;34m██\033[1;33m╗ " << std::endl;
 	std::cout << "\033[1;34m██\033[1;33m║     \033[1;34m██\033[1;33m║  \033[1;34m██\033[1;33m║╚\033[1;34m██████\033[1;33m╔╝\033[1;34m██\033[1;33m║ ╚\033[1;34m████\033[1;33m║\033[1;34m███████\033[1;33m╗\033[1;34m███████\033[1;33m║╚\033[1;34m██████\033[1;33m╔╝╚\033[1;34m██████\033[1;33m╔╝\033[1;34m██\033[1;33m║  \033[1;34m██\033[1;33m╗\033[1;34m" << std::endl;
 	std::cout << "\033[1;33m╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝\033[1;34m" << std::endl;
 	std::cout << "====================================================================================================" << std::endl;
@@ -231,24 +231,25 @@ int	PhoneBook::start_menu(){
 		return (1);
 	}
 	else
-		return (this->start_input(&line));
+		return (this->start_input(line));
 
 	return (0);
 }
 
-int	PhoneBook::start_input(std::string *line){
+int	PhoneBook::start_input(std::string line){
 
-	if (*line == "ADD")
+	if (line == "ADD")
 	{
 		return (this->add_menu());
 	}
-	else if (*line == "SEARCH")
+	else if (line == "SEARCH")
 	{
 		return (this->search_menu());
 	}
-	else if (*line == "EXIT")
+	else if (line == "EXIT")
 	{
-		return (std::cout << "\033[1;31mYou typed EXIT\033[0m" << std::endl, 1);
+		this->eof_input();
+		return (1);
 	}
 	else
 	{
@@ -261,7 +262,14 @@ int	PhoneBook::start_input(std::string *line){
 
 void	PhoneBook::eof_input(void) const{
 	std::system("clear");
-	std::cout << "\033[0m\nYou asked to leave..." << std::endl;
+	std::cout << "\033[1;35m====================================================================================================" << std::endl;
+	std::cout << "     ██████\033[1;33m╗ \033[1;35m██\033[1;33m╗   \033[1;35m██\033[1;33m╗\033[1;35m███████\033[1;33m╗     \033[1;35m██████\033[1;33m╗ \033[1;35m██\033[1;33m╗   \033[1;35m██\033[1;33m╗\033[1;35m███████\033[1;33m╗  \033[1;35m██\033[1;33m╗  \033[1;35m██\033[1;33m╗" << std::endl;;
+	std::cout << "     \033[1;35m██\033[1;33m╔══\033[1;35m██\033[1;33m╗ \033[1;35m██\033[1;33m╗ \033[1;35m██\033[1;33m╔╝\033[1;35m██\033[1;33m╔════╝     \033[1;35m██\033[1;33m╔══\033[1;35m██\033[1;33m╗ \033[1;35m██\033[1;33m╗ \033[1;35m██\033[1;33m╔╝\033[1;35m██\033[1;33m╔════╝  \033[1;35m██\033[1;33m║  \033[1;35m██\033[1;33m║" << std::endl;;
+	std::cout << "     \033[1;35m██████\033[1;33m═╝  \033[1;35m████\033[1;33m╔╝ \033[1;35m█████\033[1;33m╗       \033[1;35m██████\033[1;33m═╝  \033[1;35m████\033[1;33m╔╝ \033[1;35m█████\033[1;33m╗    \033[1;35m██\033[1;33m║  \033[1;35m██\033[1;33m║" << std::endl;;
+	std::cout << "     \033[1;35m██\033[1;33m╔══\033[1;35m██\033[1;33m╗   \033[1;35m██\033[1;33m╔╝  \033[1;35m██\033[1;33m╔══╝       \033[1;35m██\033[1;33m╔══\033[1;35m██\033[1;33m╗   \033[1;35m██\033[1;33m╔╝  \033[1;35m██\033[1;33m╔══╝    ╚═╝  ╚═╝" << std::endl;;
+	std::cout << "     \033[1;35m██████\033[1;33m╔╝   \033[1;35m██\033[1;33m║   \033[1;35m███████\033[1;33m╗     \033[1;35m██████\033[1;33m╔╝   \033[1;35m██\033[1;33m║   \033[1;35m███████\033[1;33m╗  \033[1;35m██\033[1;33m╗  \033[1;35m██\033[1;33m╗" << std::endl;;
+	std::cout << "     \033[1;33m╚═════╝    ╚═╝   ╚══════╝     ╚═════╝    ╚═╝   ╚══════╝  ╚═╝  ╚═╝" << std::endl;;
+	std::cout << "\033[1;35m====================================================================================================\033[0m" << std::endl;
 	return;
 }
 

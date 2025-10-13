@@ -13,7 +13,7 @@ class PhoneBook
 
 		int		start_menu(void);
 		void	start_draw(void) const;
-		int		start_input(std::string	*line);
+		int		start_input(std::string	line);
 		void	add_draw(void) const;
 		int		add_menu(void);
 		int		search_menu(void) const;
