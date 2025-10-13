@@ -1,5 +1,6 @@
 #include "PhoneBook.hpp"
 #include <iostream>
+#include <iomanip>
 #include <string>
 
 PhoneBook::PhoneBook(void){
@@ -13,10 +14,23 @@ PhoneBook::~PhoneBook(void){
 	return;
 }
 
+static bool	is_number(const std::string line){
+	for (int i = 0; i < line.length(); i++){
+		if (!std::isdigit(line[i]))
+			return (false);
+	}
+	return (true);
+}
+
+static std::string	formatField(std::string field){
+	if (field.length() > 10)
+		return field.substr(0, 9) + ".";
+	return (field);
+}
 
 void	PhoneBook::search_draw(void) const{
 
-	system("clear");
+	std::system("clear");
 	std::cout << "\033[1;36m                                                                                        " << std::endl;
 	std::cout << "===================================================================================================" << std::endl;
 	std::cout << "          ███████\033[1;31m╗\033[1;36m███████\033[1;31m╗ \033[1;36m█████\033[1;31m╗ \033[1;36m██████\033[1;31m╗  \033[1;36m██████\033[1;31m╗\033[1;36m██\033[1;31m╗  \033[1;36m██\033[1;31m╗     " << std::endl;
@@ -25,51 +39,96 @@ void	PhoneBook::search_draw(void) const{
 	std::cout << "          \033[1;31m╚════\033[1;36m██\033[1;31m║\033[1;36m██\033[1;31m╔══╝  \033[1;36m██\033[1;31m╔══\033[1;36m██\033[1;31m║\033[1;36m██\033[1;31m║  \033[1;36m██\033[1;31m║\033[1;36m██\033[1;31m║     \033[1;36m██\033[1;31m╔══\033[1;36m██\033[1;31m║     " << std::endl;
 	std::cout << "          \033[1;36m███████\033[1;31m║\033[1;36m███████\033[1;31m╗\033[1;36m██\033[1;31m║  \033[1;36m██\033[1;31m║\033[1;36m██\033[1;31m║  \033[1;36m██\033[1;31m║╚\033[1;36m██████\033[1;31m╗\033[1;36m██\033[1;31m║  \033[1;36m██\033[1;31m║     " << std::endl;
 	std::cout << "          \033[1;31m╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝     " << std::endl;
-	std::cout << "\033[1;36m===================================================================================================" << std::endl;
+	std::cout << "\033[1;36m===================================================================================================\033[0m" << std::endl;
 	return;
 }
+
+void	PhoneBook::search_print() const{
+
+	if (this->_get_nbr_contacts() == 0){
+		this->search_draw();
+		std::cout << "\033[0mPhoneBook has no contacts." << std::endl;
+		std::cout << "Type \033[1;31mBACK\033[0m to return:";
+	}
+	else{
+		this->search_draw();
+		std::cout << "\033[1;31m |First name| Last name| Nickname | Phone nbr|DarkSecret|\033[0m" << std::endl;
+		for (int i = 0; i < this->_get_nbr_contacts(); i++){
+			std::cout << i + 1 << "\033[1;31m|\033[0m" << std::setw(10) << formatField(this->_contacts[i].getFirstName());
+			std::cout << "\033[1;31m|\033[0m" << std::setw(10) << formatField(this->_contacts[i].getLastName());
+			std::cout << "\033[1;31m|\033[0m" << std::setw(10) << formatField(this->_contacts[i].getNickName());
+			std::cout << "\033[1;31m|\033[0m" << std::setw(10) << formatField(this->_contacts[i].getPhoneNumber());
+			std::cout << "\033[1;31m|\033[0m" << std::setw(10) << formatField(this->_contacts[i].getDarkestSecret());
+			std::cout << "\033[1;31m|\033[0m" << std::endl;
+		}
+		std::cout << "Type \033[1;31mBACK\033[0m to return:";
+	}
+
+	return ;
+}
+
+
 
 int		PhoneBook::search_menu(void) const{
 
 	std::string	input;
 	int			slot;
 
+	this->search_print();
 	while (1)
 	{
 		if (!std::getline(std::cin, input))
-			return (eof_input(), 1);
+			return (this->eof_input(), 1);
 
 		if (input.empty()){
-			search_draw();
+			this->search_print();
 			std::cout << "Input cannot be empty!" << std::endl;
 			continue;
 		}
 
+		if (input == "BACK"){
+			return (0);
+		}
+
 		if (!is_number(input) || input.length() > 1){
-			search_draw();
-			std::cout << "Input may only contain 1 digit!" << std::endl;
+			this->search_print();
+			std::cout << "Input must contain a single digit!" << std::endl;
 			continue;
 		}
 
 		slot = input[0] - '0';
 		if (slot == 0 ){
-			search_draw();
+			this->search_print();
 			std::cout << "Duh!! There is no contact 0!!" << std::endl;
 			continue;
 		}
-
 		if (slot > 8){
-			search_draw();
+			this->search_print();
 			std::cout << "Phonebook only has room for 8 contacts!" << std::endl;
 			continue;
 		}
 
-		if (slot < _get_nbr_contacts()){
-			search_draw();
+		if (this->_get_nbr_contacts() == 0 || slot > this->_get_nbr_contacts()){
+			this->search_print();
 			std::cout << "Contact '" << input << "' is still empty" << std::endl;
 			continue;
 		}
 
+		slot -= 1;
+		while (1){
+			this->search_draw();
+			std::cout << "First name: " << this->_contacts[slot].getFirstName() << std::endl;
+			std::cout << "Last name: " << this->_contacts[slot].getLastName() << std::endl;
+			std::cout << "Nickname: " << this->_contacts[slot].getNickName() << std::endl;
+			std::cout << "Phone number: " << this->_contacts[slot].getPhoneNumber() << std::endl;
+			std::cout << "Darkeste secret: " << this->_contacts[slot].getDarkestSecret() << std::endl;
+			std::cout << "Type \033[1;31mBACK\033[0m to return:";
+			std::getline(std::cin, input);
+			if (std::cin.eof())
+				return (this->eof_input(), 1);
+			if (input == "BACK")
+				return (0);
+		}
 		
 	}
 	return (0);
@@ -77,7 +136,7 @@ int		PhoneBook::search_menu(void) const{
 
 void	PhoneBook::add_draw(void) const{
 
-	system("clear");
+	std::system("clear");
 	std::cout << "\033[1;33m" << std::endl;
 	std::cout << "===================================================================================================" << std::endl;
 	std::cout << "          █████\033[1;36m╗ \033[1;33m███████\033[1;36m╗ \033[1;33m███████\033[1;36m╗      " << std::endl;
@@ -86,7 +145,7 @@ void	PhoneBook::add_draw(void) const{
 	std::cout << "         \033[1;33m██\033[1;36m╔══\033[1;33m██\033[1;36m║ \033[1;33m██\033[1;36m║  \033[1;33m██\033[1;36m║ \033[1;33m██\033[1;36m║  \033[1;33m██\033[1;36m║     " << std::endl;
 	std::cout << "         \033[1;33m██\033[1;36m║  \033[1;33m██\033[1;36m║\033[1;33m███████\033[1;36m╔╝\033[1;33m███████\033[1;36m╔╝     " << std::endl;
 	std::cout << "         \033[1;36m╚═╝  ╚═╝╚══════╝ ╚══════╝      " << std::endl;
-	std::cout << "\033[1;33m===================================================================================================" << std::endl;
+	std::cout << "\033[1;33m===================================================================================================\033[0m" << std::endl;
 	return;
 }
 
@@ -99,22 +158,26 @@ int	PhoneBook::add_menu(void){
 
 	for (i = 0; i < 5; i++)
 	{
+		this->add_draw();
 		while (1)
 		{
-			add_draw();
+			if (this->_get_nbr_contacts() == 8)
+				std::cout << std::endl << "Entering " << 8 << "# contact" << std::endl;
+			else
+				std::cout << std::endl << "Entering " << this->_get_nbr_contacts() + 1 << "# contact" << std::endl;
 			std::cout << fields[i] << ": ";
 			std::getline(std::cin, input);
 			if (std::cin.eof())
-				return (eof_input(), 1);
+				return (this->eof_input(), 1);
 
 			if (input.empty()){
-				add_draw();
+				this->add_draw();
 				std::cout << "Field cannot be empty!" << std::endl;
 				continue;
 			}
 
 			if (i == 3 && !is_number(input)){
-				add_draw();
+				this->add_draw();
 				std::cout << "Phone number must contain only numbers!" << std::endl;
 				continue;
 			}
@@ -124,13 +187,15 @@ int	PhoneBook::add_menu(void){
 		}
 	}
 
-	i = _get_nbr_contacts();
-	_contacts[i].setFirstName(values[0]);
-	_contacts[i].setLastName(values[1]);
-	_contacts[i].setNickName(values[2]);
-	_contacts[i].setPhoneNumber(values[3]);
-	_contacts[i].setDarkestSecret(values[4]);
-	_add_nbr_contacts();
+	i = this->_get_nbr_contacts();
+	if (i == 8)
+		i = 7;
+	this->_contacts[i].setLastName(values[1]);
+	this->_contacts[i].setNickName(values[2]);
+	this->_contacts[i].setFirstName(values[0]);
+	this->_contacts[i].setPhoneNumber(values[3]);
+	this->_contacts[i].setDarkestSecret(values[4]);
+	this->_add_nbr_contacts();
 
 	return (0);
 
@@ -138,7 +203,7 @@ int	PhoneBook::add_menu(void){
 
 void	PhoneBook::start_draw(void) const{
 
-	system("clear");
+	std::system("clear");
 	std::cout << "\033[1;34m                         ***** ddiogo-f presents *****" << std::endl;
 	std::cout << "====================================================================================================" << std::endl;
 	std::cout << "\033[1;34m██████\033[1;33m╗ \033[1;34m██\033[1;33m╗  \033[1;34m██\033[1;33m╗ \033[1;34m██████\033[1;33m╗ \033[1;34m███\033[1;33m╗   \033[1;34m██\033[1;33m╗\033[1;34m███████\033[1;33m╗\033[1;34m██████\033[1;33m╗  \033[1;34m██████\033[1;33m╗  \033[1;34m██████\033[1;33m╗ \033[1;34m██\033[1;33m╗  \033[1;34m██\033[1;33m╗" << std::endl;
@@ -158,15 +223,15 @@ int	PhoneBook::start_menu(){
 
 	std::string	line;
 
-	start_draw();
+	this->start_draw();
 	std::getline(std::cin, line);
 	if (std::cin.eof())
 	{
-		eof_input();
+		this->eof_input();
 		return (1);
 	}
 	else
-		return (start_input(&line));
+		return (this->start_input(&line));
 
 	return (0);
 }
@@ -175,19 +240,19 @@ int	PhoneBook::start_input(std::string *line){
 
 	if (*line == "ADD")
 	{
-		//add_draw();
-		return (add_menu());
+		return (this->add_menu());
 	}
 	else if (*line == "SEARCH")
 	{
-		//search_draw();
-		return (search_menu());
+		return (this->search_menu());
 	}
 	else if (*line == "EXIT")
+	{
 		return (std::cout << "\033[1;31mYou typed EXIT\033[0m" << std::endl, 1);
+	}
 	else
 	{
-		start_menu();
+		this->start_menu();
 		std::cout << "\033[1;36mI have no idea what you want!\033[0m\n" << std::endl;
 		return (0);
 	}
@@ -195,26 +260,18 @@ int	PhoneBook::start_input(std::string *line){
 }
 
 void	PhoneBook::eof_input(void) const{
-	system("clear");
+	std::system("clear");
 	std::cout << "\033[0m\nYou asked to leave..." << std::endl;
 	return;
 }
 
 void	PhoneBook::_add_nbr_contacts(){
-	if (this->_nbr_contacts < 7){
-		this->_nbr_contacts++;
+	if (_nbr_contacts < 8){
+		_nbr_contacts++;
 	}
 	return;
 }
 
 int		PhoneBook::_get_nbr_contacts() const{
 	return (_nbr_contacts);
-}
-
-bool	PhoneBook::is_number(const std::string line) const{
-	for (int i = 0; i < line.length(); i++){
-		if (!std::isdigit(line[i]))
-			return (false);
-	}
-	return (true);
 }

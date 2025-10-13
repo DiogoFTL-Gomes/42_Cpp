@@ -15,14 +15,14 @@ class PhoneBook
 		void	start_draw(void) const;
 		int		start_input(std::string	*line);
 		void	add_draw(void) const;
+		int		add_menu(void);
 		int		search_menu(void) const;
 		void	search_draw(void) const;
 		int		search_input(std::string *line) const;
+		void	search_print() const;
 		void	eof_input(void) const;
-		bool	is_number(const std::string line) const;
 
 
-		int		add_menu(void);
 
 	private:
 		Contact	_contacts[8];
