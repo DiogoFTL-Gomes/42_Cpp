@@ -77,7 +77,8 @@ int		PhoneBook::search_menu(void) const{
 	this->search_print();
 	while (1)
 	{
-		if (!std::getline(std::cin, input))
+		std::getline(std::cin, input);
+		if (std::cin.eof())
 			return (this->eof_input(), 1);
 
 		if (input.empty()){
