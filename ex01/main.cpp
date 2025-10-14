@@ -1,6 +1,7 @@
 #include "PhoneBook.hpp"
 #include <iostream>
 #include <iomanip>
+#include <csignal>
 
 void	eof_input(void){
 	std::system("clear");
@@ -63,6 +64,14 @@ std::string	formatField(std::string field){
 	if (field.length() > 10)
 		return field.substr(0, 9) + ".";
 	return (field);
+}
+
+bool	is_alnumsp(const std::string line){
+	for (int i = 0; i < line.length(); i++){
+		if (!std::isalnum(line[i]) && !std::isspace(line[i]))
+			return (false);
+	}
+	return (true);
 }
 
 bool	is_number(const std::string line){
@@ -185,6 +194,12 @@ int	add_menu(PhoneBook *phonebook){
 				continue;
 			}
 
+			if (i != 3 && !is_alnumsp(input)){
+				add_draw();
+				std::cout << "This field must not have special characters!" << std::endl;
+				continue;
+			}
+
 			if (i == 3 && !is_number(input)){
 				add_draw();
 				std::cout << "Phone number must contain only numbers!" << std::endl;
@@ -209,6 +224,7 @@ int	main(void)
 	PhoneBook	phonebook;
 	std::string	line;
 
+	std::signal(SIGINT, SIG_IGN);
 	start_draw();
 	while (true)
 	{

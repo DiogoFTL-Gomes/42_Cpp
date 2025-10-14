@@ -1,15 +1,12 @@
 #include "PhoneBook.hpp"
-#include <iostream>
 #include <string>
 
 PhoneBook::PhoneBook(void){
-	//std::cout << "phonebook created" << std::endl;
 	this->_nbr_contacts = 0;
 	return;
 }
 
 PhoneBook::~PhoneBook(void){
-	//std::cout << "phonebook destroyed" << std::endl;
 	return;
 }
 
