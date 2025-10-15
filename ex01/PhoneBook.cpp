@@ -10,12 +10,6 @@ PhoneBook::~PhoneBook(void){
 	return;
 }
 
-static std::string	formatField(std::string field){
-	if (field.length() > 10)
-		return field.substr(0, 9) + ".";
-	return (field);
-}
-
 void	PhoneBook::set_contacts(std::string *values, int i){
 	this->_contacts[i].setFirstName(values[0]);
 	this->_contacts[i].setLastName(values[1]);
