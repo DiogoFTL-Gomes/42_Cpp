@@ -74,6 +74,14 @@ bool	is_alnumsp(const std::string line){
 	return (true);
 }
 
+bool	is_alpha(const std::string line){
+	for (int i = 0; i < line.length(); i++){
+		if (!std::isalpha(line[i]))
+			return (false);
+	}
+	return (true);
+}
+
 bool	is_number(const std::string line){
 	for (int i = 0; i < line.length(); i++){
 		if (!std::isdigit(line[i]))
@@ -191,7 +199,12 @@ int	add_menu(PhoneBook *phonebook){
 				std::cout << "Field cannot be empty!" << std::endl;
 				continue;
 			}
-			if (i != 3 && !is_alnumsp(input)){
+			if (i < 3 && !is_alpha(input)){
+				add_draw();
+				std::cout << "This field must contain only letters!" << std::endl;
+				continue;
+			}
+			if (i == 4 && !is_alnumsp(input)){
 				add_draw();
 				std::cout << "This field must not have special characters!" << std::endl;
 				continue;
