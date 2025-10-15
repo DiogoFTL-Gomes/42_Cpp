@@ -16,7 +16,7 @@ void	PhoneBook::set_contacts(std::string *values, int i){
 	this->_contacts[i].setNickName(values[2]);
 	this->_contacts[i].setPhoneNumber(values[3]);
 	this->_contacts[i].setDarkestSecret(values[4]);
-	this->_add_nbr_contacts();
+	this->_add_current_contacts();
 }
 
 std::string	PhoneBook::get_contacts(int slot, t_field field){
@@ -34,13 +34,22 @@ std::string	PhoneBook::get_contacts(int slot, t_field field){
 		return (NULL);
 }
 
-void	PhoneBook::_add_nbr_contacts(){
+void	PhoneBook::_add_current_contacts(){
 	if (_nbr_contacts < 8){
 		_nbr_contacts++;
+		if (_total_contacts < 8){
+			_total_contacts++;
+		}
+	}
+	if (_nbr_contacts == 8){
+		_nbr_contacts = 0;
 	}
 	return;
 }
 
 int		PhoneBook::get_nbr_contacts() const{
 	return (_nbr_contacts);
+}
+int		PhoneBook::get_total_contacts() const{
+	return (_total_contacts);
 }

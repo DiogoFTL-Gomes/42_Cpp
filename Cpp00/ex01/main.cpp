@@ -92,7 +92,7 @@ bool	is_number(const std::string line){
 
 void	search_print(PhoneBook *phonebook){
 
-	if (phonebook->get_nbr_contacts() == 0){
+	if (phonebook->get_total_contacts() == 0){
 		search_draw();
 		std::cout << "\033[0mPhoneBook has no contacts." << std::endl;
 		std::cout << "Type \033[1;31mBACK\033[0m to return:";
@@ -100,7 +100,7 @@ void	search_print(PhoneBook *phonebook){
 	else{
 		search_draw();
 		std::cout << "\033[1;31m |First name| Last name| Nickname | Phone nbr|DarkSecret|\033[0m" << std::endl;
-		for (int i = 0; i < phonebook->get_nbr_contacts(); i++){
+		for (int i = 0; i < phonebook->get_total_contacts(); i++){
 			std::cout << i + 1 << "\033[1;31m|\033[0m" << std::setw(10) << formatField(phonebook->get_contacts(i, FIRSTN));
 			std::cout << "\033[1;31m|\033[0m" << std::setw(10) << formatField(phonebook->get_contacts(i, LASTN));
 			std::cout << "\033[1;31m|\033[0m" << std::setw(10) << formatField(phonebook->get_contacts(i, NICKN));
@@ -149,7 +149,7 @@ int	search_menu(PhoneBook *phonebook){
 			std::cout << std::endl << "Phonebook only has room for 8 contacts! >> ";
 			continue;
 		}
-		if (phonebook->get_nbr_contacts() == 0 || slot > phonebook->get_nbr_contacts()){
+		if (phonebook->get_total_contacts() == 0 || slot > phonebook->get_total_contacts()){
 			search_print(phonebook);
 			std::cout << std::endl << "Contact '\033[1;36m" << input << "\033[0m' is still empty >> " ;
 			continue;
@@ -186,10 +186,7 @@ int	add_menu(PhoneBook *phonebook){
 		add_draw();
 		while (1)
 		{
-			if (phonebook->get_nbr_contacts() == 8)
-				std::cout << std::endl << "Entering " << 8 << "# contact" << std::endl;
-			else
-				std::cout << std::endl << "Entering " << phonebook->get_nbr_contacts() + 1 << "# contact" << std::endl;
+			std::cout << std::endl << "Entering " << phonebook->get_nbr_contacts() + 1 << "# contact" << std::endl;
 			std::cout << "\033[1;33m" << fields[i] << "\033[0m";
 			std::getline(std::cin, input);
 			if (std::cin.eof())
@@ -219,8 +216,6 @@ int	add_menu(PhoneBook *phonebook){
 		}
 	}
 	i = phonebook->get_nbr_contacts();
-	if (i == 8)
-		i = 7;
 	phonebook->set_contacts(values, i);
 	return (0);
 
