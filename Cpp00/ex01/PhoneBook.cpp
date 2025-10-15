@@ -3,6 +3,7 @@
 
 PhoneBook::PhoneBook(void){
 	this->_nbr_contacts = 0;
+	this->_total_contacts = 0;
 	return;
 }
 
