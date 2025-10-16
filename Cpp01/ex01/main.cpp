@@ -4,9 +4,13 @@
 int	main(void){
 	Zombie	*horde;
 	Zombie	*meat;
+	int		many;
+	int		lots;
 
-	horde = zombieHorde(5, "Zombie n#");
-	meat = zombieHorde(500000000, "Meat Shield n#");
+	many = 5;
+	lots = 500000000;
+	horde = zombieHorde(many, "Zombie n#");
+	meat = zombieHorde(lots, "Meat Shield n#");
 	if (horde){
 		delete[] horde;
 	}
