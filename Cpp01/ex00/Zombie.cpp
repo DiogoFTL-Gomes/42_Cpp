@@ -2,12 +2,13 @@
 #include <iostream>
 
 Zombie::Zombie(std::string name) : _name(name) {
+	this->announce();
 }
 
 Zombie::~Zombie(void){
-	std::cout << this->_name << " has crumbled to dust..." << std::endl;
+	std::cout << "Shooting " << this->_name << " in the head..." << std::endl;
 }
 
 void	Zombie::announce(void) const{
-	std::cout << this->_name << " : BraiiiiiiinnnzzzZ..." << std::endl;
+	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
