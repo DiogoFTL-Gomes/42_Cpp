@@ -3,11 +3,15 @@
 
 int	main(void){
 	Zombie	*horde;
+	Zombie	*meat;
 
 	horde = zombieHorde(5, "Zombie n#");
-	if (!horde){
-		return (std::cout << "No Zombies in sight" << std::endl, 0);
+	meat = zombieHorde(500000000, "Meat Shield n#");
+	if (horde){
+		delete[] horde;
 	}
-	delete[] horde;
+	if (meat){
+		delete[] meat;
+	}
 	return (0);
 }
