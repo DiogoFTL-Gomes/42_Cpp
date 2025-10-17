@@ -13,8 +13,8 @@ class HumanA{
 		std::string	getHumanName() const;
 
 	private:
-		std::string		_name;
-		Weapon	&_theWeapon;
+		std::string	_name;
+		Weapon		&_theWeapon;
 };
 
 
