@@ -8,7 +8,7 @@ int	main(void){
 	int		lots;
 
 	many = 5;
-	lots = 500000000;
+	lots = 500000000;//Rigged to fail!!
 	horde = zombieHorde(many, "Zombie n#");
 	meat = zombieHorde(lots, "Meat Shield n#");
 	if (horde){
