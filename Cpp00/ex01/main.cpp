@@ -2,6 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <csignal>
+#include <cstdlib>
 
 void	eof_input(void){
 	std::system("clear");
@@ -67,7 +68,7 @@ std::string	formatField(std::string field){
 }
 
 bool	is_alnumsp(const std::string line){
-	for (int i = 0; i < line.length(); i++){
+	for (int i = 0; i < (int)line.length(); i++){
 		if (!std::isalnum(line[i]) && !std::isspace(line[i]))
 			return (false);
 	}
@@ -75,7 +76,7 @@ bool	is_alnumsp(const std::string line){
 }
 
 bool	is_alpha(const std::string line){
-	for (int i = 0; i < line.length(); i++){
+	for (int i = 0; i < (int)line.length(); i++){
 		if (!std::isalpha(line[i]))
 			return (false);
 	}
@@ -83,7 +84,7 @@ bool	is_alpha(const std::string line){
 }
 
 bool	is_number(const std::string line){
-	for (int i = 0; i < line.length(); i++){
+	for (int i = 0; i < (int)line.length(); i++){
 		if (!std::isdigit(line[i]))
 			return (false);
 	}

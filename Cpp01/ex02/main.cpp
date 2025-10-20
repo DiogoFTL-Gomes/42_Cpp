@@ -6,13 +6,13 @@ int	main(void){
 	std::string	&stringREF = line;
 
 	std::cout << &line << std::endl;
-	std::cout << &stringPTR << std::endl;
+	std::cout << stringPTR << std::endl;
 	std::cout << &stringREF << std::endl << std::endl;
 	
 	std::cout << line << std::endl;
 	std::cout << stringPTR << std::endl;
 	std::cout << stringREF << std::endl << std::endl;
-/*
+
 	std::cout << "Changing line value:" << std::endl;
 	line = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHH!!!!!!!!!!";
 	std::cout << line << std::endl;
@@ -24,6 +24,6 @@ int	main(void){
 	std::cout << line << std::endl;
 	std::cout << stringPTR << std::endl;
 	std::cout << stringREF << std::endl << std::endl;
-*/
+
 	return (0);
 }

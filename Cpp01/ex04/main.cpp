@@ -18,7 +18,7 @@ int main(int argc, char *argv[]){
 	}
 
 	//antigo open(fd) :)
-	std::ifstream	input_file(sourcefile);
+	std::ifstream	input_file(sourcefile.c_str());
 	if (!input_file.is_open()){
 		std::cerr << "Could not open input file " << sourcefile << std::endl;
 		return (1);
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]){
 		pos = content.find(s_target, pos + s_new.length());
 	}
 
-	std::ofstream	output_file(sourcefile + ".replace");
+	std::ofstream	output_file((sourcefile + ".replace").c_str());
 	if (!output_file.is_open()){
 		std::cerr << "Could not open output file " << sourcefile << ".replace" << std::endl;
 		return (1);
