@@ -50,6 +50,7 @@ void	Harl::complain(std::string level){
 			break;
 		default:
 			std::cout << '"' << level << "\" means nothing to Harl!!" << std::endl;
+			std::cout << "Harl accepts only [DEBUG][INFO][WARNING][ERROR] as inputs" << std::endl;
 	}
 	return;
 }

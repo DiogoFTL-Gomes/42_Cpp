@@ -4,6 +4,7 @@
 int main(int argc, char *argv[]){
 	if (argc != 2){
 		std::cout << "Harl needs just one argument!!" << std::endl;
+		std::cout << "Harl accepts only [DEBUG][INFO][WARNING][ERROR] as inputs" << std::endl;
 		return (1);
 	}
 	std::string	level;
