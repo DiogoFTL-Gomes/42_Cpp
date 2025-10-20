@@ -16,8 +16,9 @@ int main( void ) {
 	std::cout << a << "<- a | ++a ->" << ++a << std::endl;
 	std::cout << a++ << "<- a++ | a ->" << a << std::endl;
 	std::cout << a * 2 << "|" << a * 3 << "|" << a * 4 << std::endl;
+	std::cout << a / 0 << std::endl;
 	
-	std::cout << "(a * 5) * (b / 2) = " << (a * 5) * ((Fixed)b / 2) << std::endl;
+	std::cout << "(a + 5.3f) * (b / 2) = " << (a + 5.3f) * ((Fixed)b / 2) << std::endl;
 	//std::cout << Fixed::max( a, b ) << std::endl;
 
 return 0;
