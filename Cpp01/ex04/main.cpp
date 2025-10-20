@@ -23,10 +23,10 @@ int main(int argc, char *argv[]){
 		std::cerr << "Could not open input file " << sourcefile << std::endl;
 		return (1);
 	}
-	input_file.close();
 
 	std::string	content;
 	std::getline(input_file, content, '\0');//delimitador para evitar que pare em \n
+	input_file.close();
 
 	size_t	pos = content.find(s_target);//position where a s_target is found in content starting at 0 by default
 	while (pos != std::string::npos){//npos is value that is usualy returned when a string fails?
