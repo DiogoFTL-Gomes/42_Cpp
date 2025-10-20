@@ -17,7 +17,7 @@ int	main(void){
 	line = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHH!!!!!!!!!!";
 	std::cout << line << std::endl;
 	std::cout << stringPTR << std::endl;
-	std::cout << stringREF << << std::endl << std::endl;
+	std::cout << stringREF << std::endl << std::endl;
 
 	std::cout << "Changing stringREF value:" << std::endl;
 	stringREF = "Oh, its just a brain...";
