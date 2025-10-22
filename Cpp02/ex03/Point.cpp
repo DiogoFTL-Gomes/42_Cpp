@@ -19,10 +19,10 @@ Point	&Point::operator=(const Point &other){//Useless copy assignment operator o
 	return (*this);
 }
 
-float	Point::getX() const{
-	return this->_x.toFloat();
+Fixed	Point::getX() const{
+	return this->_x;
 }
 
-float	Point::getY() const{
-	return this->_y.toFloat();
+Fixed	Point::getY() const{
+	return this->_y;
 }
