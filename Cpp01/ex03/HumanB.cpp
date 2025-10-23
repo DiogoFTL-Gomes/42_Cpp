@@ -4,6 +4,10 @@
 HumanB::HumanB(std::string name) : _name( "\033[1;33m" + name + "\033[0m"), _theWeapon(NULL){
 }
 
+HumanB::HumanB(std::string name, Weapon &thisWeapon) : _name( "\033[1;33m" + name + "\033[0m"), _theWeapon(NULL){
+	this->setWeapon(thisWeapon);
+}
+
 HumanB::~HumanB(){
 }
 

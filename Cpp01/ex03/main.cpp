@@ -19,5 +19,10 @@ int main(){
 	bigStick.setType("some other type of club");
 	jim.attack();
 
+	HumanB toze("Toze", club);
+	toze.attack();
+	club.setType("panela");
+	toze.attack();
+
 	return 0;
 }
