@@ -14,12 +14,15 @@ ClapTrap::ClapTrap(const ClapTrap &other) : _name(other._name), _hitPoints(other
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other){
-	std::cout << "ClapTrap " << this->_name << " is now equal to " << other._name << std::endl;
 	if (this != &other){
 		this->_name = other._name;
 		this->_attack = other._attack;
 		this->_energy = other._energy;
 		this->_hitPoints = other._hitPoints;
+		std::cout << "ClapTrap " << this->_name << " has been equalized" <<  std::endl;
+	}
+	else{
+	std::cout << "ClapTrap " << this->_name << " cannot be equalized to itself" << std::endl;
 	}
 	return (*this);
 }

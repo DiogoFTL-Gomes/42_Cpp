@@ -17,7 +17,8 @@ class	ClapTrap{
 
 		std::string	getName() const;
 
-	private:
+//Private is now protected so children can access it.
+	protected:
 		std::string	_name;
 		int			_hitPoints;
 		int			_energy;
