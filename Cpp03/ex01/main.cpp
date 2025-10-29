@@ -3,19 +3,24 @@
 #include "ScavTrap.hpp"
 
 int	main(void){
+	std::cout << "\033[1;35m##### Creating nameless Scavtrap #####\033[0m" << std::endl;
 	ScavTrap	uno;
 	std::cout << std::endl;
 
+	std::cout << "\033[1;35m##### Creating Scavtrap from another Scavtrap #####\033[0m" << std::endl;
 	ScavTrap	dos(uno);
 	std::cout << std::endl;
 
-	ScavTrap	tres("\033[1;34mRRRoberrtoo\033[0m");
+	std::cout << "\033[1;35m##### Creating Scavtrap with a name #####\033[0m" << std::endl;
+	ScavTrap	tres("RRRoberrtoo");
 	std::cout << std::endl;
 
-	uno = ScavTrap("\033[1;35mMaria\033[0m");
+	std::cout << "\033[1;35m##### Equalizing Scavtrap to a new Scavtrap #####\033[0m" << std::endl;
+	uno = ScavTrap("Maria");
 	std::cout << std::endl;
 
-	dos = ScavTrap("\033[1;36mDomingos\033[0m");
+	std::cout << "\033[1;35m##### Equalizing Scavtrap to a new Scavtrap #####\033[0m" << std::endl;
+	dos = ScavTrap("Domingos");
 	std::cout << std::endl;
 
 	uno.attack(dos.getName());
