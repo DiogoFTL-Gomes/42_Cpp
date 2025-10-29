@@ -20,7 +20,7 @@ class	ClapTrap{
 //Private is now protected so children can access it.
 	protected:
 		std::string	_name;
-		int			_hitPoints;
+		int			_hit;
 		int			_energy;
 		int			_attack;
 };

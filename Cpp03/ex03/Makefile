@@ -1,12 +1,13 @@
-NAME = FragTrap
+NAME = DiamondTrap
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -Wshadow  -Wno-shadow -std=c++98
 
 SRC = 	main.cpp \
 		ClapTrap.cpp \
 		ScavTrap.cpp \
-		FragTrap.cpp
+		FragTrap.cpp \
+		DiamondTrap.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

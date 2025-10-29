@@ -1,15 +1,15 @@
 #include <iostream>
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : _name("Fulano"), _hitPoints(10), _energy(10), _attack(0){
+ClapTrap::ClapTrap() : _name("Fulano"), _hit(100), _energy(100), _attack(100){
 	std::cout << "ClapTrap " << this->_name << " has been constructed!" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energy(10), _attack(0){
+ClapTrap::ClapTrap(std::string name) : _name(name), _hit(100), _energy(100), _attack(100){
 	std::cout << "ClapTrap " << this->_name << " has been constructed!" << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap &other) : _name(other._name), _hitPoints(other._hitPoints), _energy(other._energy), _attack(other._attack) {
+ClapTrap::ClapTrap(const ClapTrap &other) : _name(other._name), _hit(other._hit), _energy(other._energy), _attack(other._attack) {
 	std::cout << "ClapTrap " << this->_name << " has a twin brother!" << std::endl;
 }
 
@@ -18,7 +18,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other){
 		this->_name = other._name;
 		this->_attack = other._attack;
 		this->_energy = other._energy;
-		this->_hitPoints = other._hitPoints;
+		this->_hit = other._hit;
 		std::cout << "ClapTrap " << this->_name << " has been equalized" <<  std::endl;
 	}
 	else{
@@ -40,7 +40,7 @@ void	ClapTrap::attack(const std::string& target){
 	std::cout << "ClapTrap " << this->_name << " atacks " << target << " causing "<< this->_attack << " points of damage." << std::endl;}
 
 void	ClapTrap::takeDamage(unsigned int amount){
-	this->_hitPoints -= amount;
+	this->_hit -= amount;
 	std::cout << "ClapTrap " << this->_name << " has taken " << amount << " points of damage" << std::endl;
 }
 
@@ -50,7 +50,7 @@ void	ClapTrap::beRepaired(unsigned int amount){
 		return;
 	}
 	--this->_energy;
-	this->_hitPoints += amount;
+	this->_hit += amount;
 	std::cout << "ClapTrap " << this->_name << " has recovered " << amount << " points of health" << std::endl;
 }
 

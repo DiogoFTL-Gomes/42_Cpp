@@ -15,6 +15,9 @@ class ScavTrap : virtual public ClapTrap {
 		void	attack(const std::string &target);
 		void	guardGate();
 
+		static const int	sci_hit = 100;
+		static const int	sci_energy = 50;
+		static const int	sci_attack = 20;
 };
 
 #endif
