@@ -59,3 +59,9 @@ void	ClapTrap::beRepaired(unsigned int amount){
 std::string	ClapTrap::getName() const{
 	return (this->_name);
 }
+
+void	ClapTrap::announceAttributes() const{
+	std::cout << "hit:" << this->_hit << std::endl;
+	std::cout << "energy:" << this->_energy << std::endl;
+	std::cout << "attack:" << this->_attack << std::endl;
+}

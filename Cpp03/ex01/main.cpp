@@ -5,6 +5,7 @@
 int	main(void){
 	std::cout << "\033[1;35m##### Creating nameless Scavtrap #####\033[0m" << std::endl;
 	ScavTrap	uno;
+	uno.announceAttributes();
 	std::cout << std::endl;
 
 	std::cout << "\033[1;35m##### Creating Scavtrap from another Scavtrap #####\033[0m" << std::endl;

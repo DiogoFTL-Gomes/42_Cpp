@@ -2,16 +2,16 @@
 #include <iostream>
 
 ScavTrap::ScavTrap() : ClapTrap(){
-	this->_hit = 100;
-	this->_energy = 50;
-	this->_attack = 20;
+	this->_hit = this->sci_hit;
+	this->_energy = this->sci_energy;
+	this->_attack = this->sci_attack;
 	std::cout << "\033[1;32mScavTrap " << this->_name << " has been constructed!\033[0m" << std::endl;
 }
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
-	this->_hit = 100;
-	this->_energy = 50;
-	this->_attack = 20;
+	this->_hit = this->sci_hit;
+	this->_energy = this->sci_energy;
+	this->_attack = this->sci_attack;
 	std::cout << "\033[1;32mScavTrap " << this->_name << " has been constructed!\033[0m" << std::endl;
 }
 

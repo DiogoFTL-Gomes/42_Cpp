@@ -16,6 +16,7 @@ class	ClapTrap{
 		void beRepaired(unsigned int amount);
 
 		std::string	getName() const;
+		void	announceAttributes() const;
 
 	private:
 		std::string	_name;

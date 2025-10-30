@@ -58,10 +58,11 @@ void	DiamondTrap::attack(const std::string &target){
 }
 
 void	DiamondTrap::whoAmI(){
-	std::cout << "\033[1;34mHi! My name is \033[0m" << this->_name << "\033[1;34m and I have a ClapTrap named.\033[0m" << ClapTrap::_name << std::endl;
-	std::cout << "\033[1;34mIt itches alot!\033[0m";
+	std::cout << "\033[1;34mHi! My name is \033[0m" << this->getDiamondName() << "\033[1;34m and I have a ClapTrap named \033[0m" << this->getName() << std::endl;
+	std::cout << "\033[1;34mIt itches alot!\033[0m" << std::endl;
+	
 }
 
-std::string	DiamondTrap::getName() const{
+std::string	DiamondTrap::getDiamondName() const{
 	return (this->_name);
 }

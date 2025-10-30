@@ -16,6 +16,7 @@ class	ClapTrap{
 		void beRepaired(unsigned int amount);
 
 		std::string	getName() const;
+		void	announceAttributes() const;
 
 //Private is now protected so children can access it.
 	protected:

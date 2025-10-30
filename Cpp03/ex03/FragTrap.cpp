@@ -1,16 +1,16 @@
 #include "FragTrap.hpp"
 
 FragTrap::FragTrap() : ClapTrap(){
-	this->_hit = 100;
-	this->_energy = 100;
-	this->_attack = 30;
+	this->_hit = this->sci_hit;
+	this->_energy = this->sci_energy;
+	this->_attack = this->sci_attack;
 	std::cout << "\033[1;33mFragTrap " << this->_name << " constructed itself from nothing!\033[0m" << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
-	this->_hit = 100;
-	this->_energy = 100;
-	this->_attack = 30;
+	this->_hit = this->sci_hit;
+	this->_energy = this->sci_energy;
+	this->_attack = this->sci_attack;
 	std::cout << "\033[1;33mA FragTrap has been named " << this->_name << " and was constructed!\033[0m" << std::endl;
 }
 

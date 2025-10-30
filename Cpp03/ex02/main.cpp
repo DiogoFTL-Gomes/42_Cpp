@@ -6,6 +6,7 @@
 int	main(void){
 	std::cout << "\033[1;35m##### Creating nameless Fragtrap #####\033[0m" << std::endl;
 	FragTrap	uno;
+	uno.announceAttributes();
 	std::cout << std::endl;
 
 	std::cout << "\033[1;35m##### Creating Fragtrap from another Fragtrap #####\033[0m" << std::endl;

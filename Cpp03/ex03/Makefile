@@ -1,7 +1,7 @@
 NAME = DiamondTrap
 
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -Wshadow  -Wno-shadow -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -Wshadow -std=c++98
 
 SRC = 	main.cpp \
 		ClapTrap.cpp \

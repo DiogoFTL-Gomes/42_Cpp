@@ -1,11 +1,11 @@
 #include <iostream>
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap() : _name("Fulano"), _hit(100), _energy(100), _attack(100){
+ClapTrap::ClapTrap() : _name("Fulano"), _hit(10), _energy(10), _attack(0){
 	std::cout << "ClapTrap " << this->_name << " has been constructed!" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hit(100), _energy(100), _attack(100){
+ClapTrap::ClapTrap(std::string name) : _name(name), _hit(10), _energy(10), _attack(0){
 	std::cout << "ClapTrap " << this->_name << " has been constructed!" << std::endl;
 }
 
@@ -58,4 +58,10 @@ void	ClapTrap::beRepaired(unsigned int amount){
 
 std::string	ClapTrap::getName() const{
 	return (this->_name);
+}
+
+void	ClapTrap::announceAttributes() const{
+	std::cout << "hit:" << this->_hit << std::endl;
+	std::cout << "energy:" << this->_energy << std::endl;
+	std::cout << "attack:" << this->_attack << std::endl;
 }
