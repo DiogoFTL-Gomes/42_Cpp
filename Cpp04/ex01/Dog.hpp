@@ -3,8 +3,12 @@
 
 #include "Animal.hpp"
 #include <iostream>
+#include "Brain.hpp"
 
 class Dog : public Animal{
+
+	private:
+		Brain	*_dumbIdeias;
 
 	public:
 		Dog();

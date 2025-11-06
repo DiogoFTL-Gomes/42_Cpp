@@ -4,13 +4,18 @@
 #include <iostream>
 
 class	Brain{
+
+	private:
+		std::string ideias[100];
+
 	public:
 		Brain();
-		Brain(Brain &other);
-		Brain	&operator=(Brain &other);
+		Brain(const Brain &other);
+		Brain	&operator=(const Brain &other);
 		~Brain();
 
-		std::string ideias[100];
+	std::string	getIdeia(int index) const;
+	void		setIdeia(int index, const std::string &otherIdeia);
 };
 
 #endif
