@@ -4,15 +4,16 @@ Animal::Animal() : _type("\033[1;32mBlob of biomass\033[0m") {
 	std::cout << "A " << this->_type << " Animal constructor created" << std::endl;
 }
 
-Animal::Animal(const Animal &other){
-	*this = other;
+Animal::Animal(const Animal &other) : _type(other._type){
 	std::cout << "Animal copy constructor called on a " << this->_type << " _type Animal" << std::endl;
 }
 
 Animal	&Animal::operator=(const Animal &other){
-	std::cout << this->getType() << " Animal has been turned into a ";
-	*this = other;
-	std::cout << this->getType() << " Animal with a equal operator" << std::endl;
+	if (this != &other){
+		std::cout << this->getType() << " Animal has been turned into a ";
+		this->_type = other._type;
+		std::cout << this->getType() << " Animal with a equal operator" << std::endl;
+	}
 	return (*this);
 }
 

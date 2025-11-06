@@ -39,6 +39,11 @@ int	main(){
 	delete(singi);
 	std::cout << std::endl;
 
+	const Dog	*bobby = new Dog();
+	bobby->makeSound();
+	delete (bobby);
+	std::cout << std::endl;
+
 	delete (philo);
 	delete (ignis);
 	delete (meta);

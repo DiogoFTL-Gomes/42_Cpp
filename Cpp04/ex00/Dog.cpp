@@ -5,15 +5,17 @@ Dog::Dog() : Animal(){
 	std::cout << "A " << this->_type << " has been created!" << std::endl;
 }
 
-Dog::Dog(const Dog &other) : Animal(){
+Dog::Dog(const Dog &other) : Animal(other){
 	*this = other;
 	std::cout << "A Dog copy constructor has been called" << std::endl;
 }
 
 Dog	&Dog::operator=(const Dog &other){
-	std::cout << this->_type << " has been turned into another ";
-	*this = other;
-	std::cout << this->_type << " with an equal operator" << std::endl;
+	if (this != &other){
+		std::cout << this->_type << " has been turned into another ";
+		this->_type = other._type;
+		std::cout << this->_type << " with an equal operator" << std::endl;
+	}
 	return (*this);
 }
 

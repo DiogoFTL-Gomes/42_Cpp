@@ -1,4 +1,4 @@
-NAME = SetOnFire
+NAME = BrainAnimals
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -8,7 +8,8 @@ SRC = 	main.cpp \
 		Dog.cpp \
 		Cat.cpp \
 		WrongAnimal.cpp \
-		WrongCat.cpp
+		WrongCat.cpp \
+		Brain.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

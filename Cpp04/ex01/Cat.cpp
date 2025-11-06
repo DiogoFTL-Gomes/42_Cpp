@@ -5,15 +5,17 @@ Cat::Cat() : Animal(){
 	std::cout << "A " << this->_type << " created itself!" << std::endl;
 }
 
-Cat::Cat(const Cat &other) : Animal(){
+Cat::Cat(const Cat &other) : Animal(other){
 	*this = other;
 	std::cout << "A Cat copy constructor has been called" << std::endl;
 }
 
 Cat	&Cat::operator=(const Cat &other){
-	std::cout << this->_type << " reluctantly becomes a ";
-	*this = other;
-	std::cout << this->_type << " with an equal overload" << std::endl;
+	if (this != &other){
+		std::cout << this->_type << " reluctantly becomes a ";
+		this->_type = other._type;
+		std::cout << this->_type << " with an equal overload" << std::endl;
+	}
 	return (*this);
 }
 
