@@ -28,3 +28,14 @@ std::string	Animal::getType() const{
 void	Animal::makeSound() const{
 	std::cout << "Horrible screeching noise from a " << this->getType() << std::endl;
 }
+
+void	Animal::addIdea(const std::string &idea){
+	(void)idea;
+	std::cout << this->getType() << " cannot hold ideas...thankfully" << std::endl;
+}
+
+std::string	Animal::rememberIdea(int index) const{
+	(void)index;
+	std::cout << this->getType() << " has no brain...isn't it obvious?!?" << std::endl;
+	return ("");
+}

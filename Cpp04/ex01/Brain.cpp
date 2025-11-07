@@ -6,7 +6,7 @@ Brain::Brain(){
 
 Brain::Brain(const Brain &other){
 	for (int i = 0; i < 100; i++){
-		this->setIdeia(i, other.getIdeia(i));
+		this->setIdea(i, other.getIdea(i));
 	}
 	std::cout << "A brain has been copied" << std::endl;
 }
@@ -15,7 +15,7 @@ Brain	&Brain::operator=(const Brain &other){
 	if (this != &other)
 	{
 		for (int i = 0; i < 100; i++){
-			this->setIdeia(i, other.getIdeia(i));
+			this->setIdea(i, other.getIdea(i));
 		}
 		std::cout << "A brain has been equalized to another" << std::endl;
 	}
@@ -27,16 +27,27 @@ Brain::~Brain(){
 }
 
 
-std::string	Brain::getIdeia(int index) const{
-	if (index >= 0 && index < 100){
-		return (this->ideias[index]);
+std::string	Brain::getIdea(int index) const{
+	if (index >= 0 && index < MAX_IDEAS){
+		if (!this->ideas[index].empty()){
+			return (this->ideas[index]);
+		}
 	}
 	return ("");
 }
 
-void	Brain::setIdeia(int index, const std::string &otherIdeia){
-	if (index >= 0 && index < 100){
-		this->ideias[index] = otherIdeia;
+void	Brain::setIdea(int index, const std::string &otherIdea){
+	if (index >= 0 && index < MAX_IDEAS){
+		this->ideas[index] = otherIdea;
 	}
 }
 
+int	Brain::addIdea(const std::string &newIdea){
+	for (int i = 0; i < MAX_IDEAS; i++){
+		if (this->ideas[i].empty()){
+			this->setIdea(i, newIdea);
+			return (i);
+		}
+	}
+	return (-1);
+}

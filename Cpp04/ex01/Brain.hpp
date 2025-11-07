@@ -1,12 +1,14 @@
 #ifndef BRAIN_H
 # define BRAIN_H
 
-#include <iostream>
+# include <iostream>
+
+# define MAX_IDEAS 100
 
 class	Brain{
 
 	private:
-		std::string ideias[100];
+		std::string ideas[100];
 
 	public:
 		Brain();
@@ -14,8 +16,9 @@ class	Brain{
 		Brain	&operator=(const Brain &other);
 		~Brain();
 
-	std::string	getIdeia(int index) const;
-	void		setIdeia(int index, const std::string &otherIdeia);
+	std::string	getIdea(int index) const;
+	void		setIdea(int index, const std::string &otherIdea);
+	int			addIdea(const std::string &newIdea);
 };
 
 #endif
