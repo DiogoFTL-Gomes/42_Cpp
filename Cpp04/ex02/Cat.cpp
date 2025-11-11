@@ -48,3 +48,8 @@ std::string	Cat::rememberIdea(int index) const{
 	else
 		return (this->_catBrain->getIdea(index));
 }
+
+Cat*	Cat::clone() const {
+	std::cout << this->getType() << " has being cloned! SCIENCE!!" << std::endl;
+	return new Cat(*this);
+}

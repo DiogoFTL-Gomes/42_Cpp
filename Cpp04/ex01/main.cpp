@@ -41,9 +41,28 @@ int	main(){
 	std::cout << std::endl;
 
 	delete (philo);
+	philo = animalShelter[0]->clone();
+	philo->makeSound();
+	std::cout << "\"" << philo->rememberIdea(0) << "\" thinks philo the " << philo->getType() << std::endl;
+	std::cout << std::endl;
+
+	
 	delete (ignis);
+	ignis = animalShelter[1]->clone();
+	ignis->makeSound();
+	std::cout << "\"" << ignis->rememberIdea(0) << "\" thinks ignis the " << ignis->getType() << std::endl;
+	std::cout << std::endl;
+
 	for (int i = 0; i < beds; i++){
 		delete animalShelter[i];
 	}
+	std::cout << std::endl;
+	std::cout << "\"" << philo->rememberIdea(0) << "\" thinks the philo the " << philo->getType() << std::endl;
+	std::cout << std::endl;
+	std::cout << "\"" << ignis->rememberIdea(0) << "\" thinks the ignis the " << ignis->getType() << std::endl;
+	std::cout << std::endl;
+
+	delete (philo);
+	delete (ignis);
 	return (0);
 }

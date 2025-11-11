@@ -19,6 +19,7 @@ class AAnimal{
 		virtual void	makeSound() const = 0;
 		virtual void	addIdea(const std::string &idea) = 0;
 		virtual std::string	rememberIdea(int index) const = 0;
+		virtual AAnimal* clone() const = 0;
 };
 
 

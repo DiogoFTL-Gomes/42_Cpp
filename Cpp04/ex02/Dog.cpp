@@ -48,3 +48,8 @@ std::string	Dog::rememberIdea(int index) const{
 	else
 		return (this->_dogBrain->getIdea(index));
 }
+
+Dog *	Dog::clone() const {
+	std::cout << this->getType() << " has being cloned! SCIENCE!!" << std::endl;
+	return new Dog(*this);
+}

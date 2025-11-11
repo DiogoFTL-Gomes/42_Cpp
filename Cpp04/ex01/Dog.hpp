@@ -14,11 +14,12 @@ class Dog : public Animal{
 		Dog();
 		Dog(const Dog &other);
 		Dog &operator=(const Dog &other);
-		~Dog();
+		virtual ~Dog();
 
-		void	makeSound() const;
-		void	addIdea(const std::string &idea);
-		std::string	rememberIdea(int index) const;
+		virtual void	makeSound() const;
+		virtual void	addIdea(const std::string &idea);
+		virtual std::string	rememberIdea(int index) const;
+		virtual Dog* clone() const;
 };
 
 #endif

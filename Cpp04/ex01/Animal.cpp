@@ -5,7 +5,7 @@ Animal::Animal() : _type("\033[1;32mBlob of biomass\033[0m") {
 }
 
 Animal::Animal(const Animal &other) : _type(other._type){
-	std::cout << "Animal copy constructor called on a " << this->_type << " _type Animal" << std::endl;
+	std::cout << "Animal copy constructor called on a " << this->_type << " Animal" << std::endl;
 }
 
 Animal	&Animal::operator=(const Animal &other){
