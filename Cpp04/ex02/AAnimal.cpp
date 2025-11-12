@@ -1,4 +1,4 @@
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
 AAnimal::AAnimal() : _type("\033[1;32mBlob of biomass\033[0m") {
 	std::cout << "A " << this->_type << " AAnimal constructor created" << std::endl;

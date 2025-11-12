@@ -5,7 +5,7 @@ Brain::Brain(){
 }
 
 Brain::Brain(const Brain &other){
-	for (int i = 0; i < 100; i++){
+	for (int i = 0; i < MAX_IDEAS; i++){
 		this->setIdea(i, other.getIdea(i));
 	}
 	std::cout << "A brain has been copied" << std::endl;
@@ -14,7 +14,7 @@ Brain::Brain(const Brain &other){
 Brain	&Brain::operator=(const Brain &other){
 	if (this != &other)
 	{
-		for (int i = 0; i < 100; i++){
+		for (int i = 0; i < MAX_IDEAS; i++){
 			this->setIdea(i, other.getIdea(i));
 		}
 		std::cout << "A brain has been equalized to another" << std::endl;

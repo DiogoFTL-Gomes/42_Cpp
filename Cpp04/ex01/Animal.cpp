@@ -30,12 +30,16 @@ void	Animal::makeSound() const{
 }
 
 void	Animal::addIdea(const std::string &idea){
-	(void)idea;
-	std::cout << this->getType() << " cannot hold ideas...thankfully" << std::endl;
+	std::cout << this->getType() << " cannot hold ideas...thankfully he forgot about \"" << idea << "\"" << std::endl;
 }
 
 std::string	Animal::rememberIdea(int index) const{
 	(void)index;
 	std::cout << this->getType() << " has no brain...isn't it obvious?!?" << std::endl;
 	return ("");
+}
+
+Animal*	Animal::clone() const {
+	std::cout << this->getType() << " has being cloned! SCIENCE!!" << std::endl;
+	return new Animal(*this);
 }

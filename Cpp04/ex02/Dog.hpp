@@ -1,7 +1,7 @@
 #ifndef DOG_H
 # define DOG_H
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include <iostream>
 #include "Brain.hpp"
 
