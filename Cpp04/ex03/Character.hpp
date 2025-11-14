@@ -8,9 +8,13 @@ class Character : public ICharacter {
 	private:
 		std::string	_name;
 		AMateria	*_inventory[4];
+		AMateria	*_bag[100];
+		int			_indexBag;
 
 		void	_clearInventory();
 		void	_copyInventory(Character const &other);
+		void	_clearBag();
+		void	_copyBag(Character const &other);
 
 	public:
 		Character(std::string const &name);
