@@ -1,0 +1,16 @@
+#include "Weapon.hpp"
+
+Weapon::Weapon(std::string type){
+	this->setType(type);
+}
+
+Weapon::~Weapon(void){
+}
+
+const std::string &Weapon::getType() const{
+	return (_type);
+}
+
+void	Weapon::setType(const std::string newType){
+	_type = "\033[1;31m" + newType + "\033[0m"; 
+}
